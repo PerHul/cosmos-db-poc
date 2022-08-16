@@ -6,32 +6,40 @@ import org.springframework.data.annotation.Id;
 
 import com.azure.spring.data.cosmos.core.mapping.Container;
 
+import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
+
 @Container(containerName = "userProfiles", ru = "400")
 public class UserProfile {
 
+    @PartitionKey
     @Id
-    private String userId;
-    private List<InstructionKey> completedInstructions;
+    private String id;
+
+    private List<IntroductionKey> completedIntroductions;
+
     private DashboardPreferences dashboardPreferences;
     
-    public String getUserId() {
-        return userId;
+
+    public String getId() {
+        return id;
     }
-    public List<InstructionKey> getCompletedInstructions() {
-        return completedInstructions;
+
+    public void setId(String id) {
+        this.id = id;
     }
+
     public DashboardPreferences getDashboardPreferences() {
         return dashboardPreferences;
     }
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-    public void setCompletedInstructions(List<InstructionKey> completedInstructions) {
-        this.completedInstructions = completedInstructions;
-    }
+
     public void setDashboardPreferences(DashboardPreferences dashboardPreferences) {
         this.dashboardPreferences = dashboardPreferences;
     }
-
+    public List<IntroductionKey> getCompletedIntroductions() {
+        return completedIntroductions;
+    }
+    public void setCompletedIntroductions(List<IntroductionKey> completedIntroductions) {
+        this.completedIntroductions = completedIntroductions;
+    }
     
 }
